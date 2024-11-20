@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
@@ -66,3 +67,10 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - json (enabled by default - don't turn it off)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+=======
+# admin-management-sistem
+Admin Management System adalah solusi berbasis web untuk pendataan program dan dosen. Sistem ini dirancang untuk meningkatkan efisiensi pengelolaan data institusi pendidikan, dengan fitur seperti:
+- Pendataan program lengkap, termasuk penambahan program baru secara otomatis.
+- Pengelolaan data dosen, mulai dari NIDN hingga jabatan fungsional.
+- Sistem ini dibangun menggunakan CodeIgniter 4 dengan dukungan antarmuka modern dari SB Admin 2.
+>>>>>>> 8b3dbd9bf96d6a83b2d8c05d8b8aa5cd18760dbb

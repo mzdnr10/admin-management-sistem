@@ -12,13 +12,24 @@
             </button>
 
             <!-- Topbar Search -->
+            <?php
+            $currentPage = current_url(); // URL halaman saat ini
+            $searchEndpoint = '';
+
+            if (strpos($currentPage, 'dataprogram') !== false) {
+                $searchEndpoint = base_url('search-program');
+            } elseif (strpos($currentPage, 'tabeldosen') !== false) {
+                $searchEndpoint = base_url('search-dosen');
+            }
+            ?>
             <form
-                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+                action="<?= $searchEndpoint ?>" method="get" enctype="multipart/form-data">
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                    <input type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" placeholder="Search for..."
                         aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
+                        <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
                         </button>
                     </div>
@@ -31,7 +42,7 @@
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">John Doe</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('username') ?></span>
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

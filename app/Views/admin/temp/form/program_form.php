@@ -11,9 +11,9 @@
                                         <?= session()->getFlashdata('error') ?>
                                     </div>
                                 <?php endif; ?>
-                                <form action="<?= base_url('doaddprogram/') ?>" method="post" enctype="multipart/form-data">
+                                <form action="<?= base_url('doaddprogram') ?>" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="id_program" name="id_program" value="<?= $id_program ?>" readonly>
+                                        <input type="hidden" class="form-control form-control-user" id="id_program" name="id_program" value="<?= $id_program ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="nama_program" name="nama_program" placeholder="Nama Kategori" required>

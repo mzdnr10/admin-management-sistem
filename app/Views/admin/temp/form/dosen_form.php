@@ -13,7 +13,7 @@
                                 <?php endif; ?>
                                 <form action="<?= base_url('doadddosen') ?>" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="id_dosen" name="id_dosen" value="<?= $id_dosen ?>" readonly>
+                                        <input type="hidden" class="form-control form-control-user" id="id_dosen" name="id_dosen" value="<?= $id_dosen ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <select class="form-control" id="id_program" name="id_program" onchange="toggleNewProgram()" required>

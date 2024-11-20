@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\ProgramController;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -42,7 +44,7 @@ $routes->post('doLogin', 'AuthController::doLogin');
 $routes->get('logout', 'AuthController::logout');
 
 
-$routes->get('Dashboard', 'DashController::index');
+$routes->get('dashboard', 'DashController::index');
 $routes->get('profile', 'DashController::profile');
 $routes->get('suratmasuk', 'DashController::suratmasuk');
 
@@ -51,6 +53,12 @@ $routes->get('adddosen', 'DosenController::adddosen');
 $routes->post('doadddosen', 'DosenController::doadddosen');
 $routes->post('doadddata', 'DosenController::doadddata');
 $routes->get('hapusdosen/(:num)', 'DosenController::hapusdosen/$1');
+$routes->get('editdosen/(:num)', 'DosenController::editdosen/$1');
+$routes->get('import-dosen', 'DosenController::importForm'); // Menampilkan form
+$routes->post('import-dosen', 'DosenController::importExcel'); // Proses import
+$routes->get('search-dosen', 'DosenController::searchdosen');
+
+
 
 
 
@@ -60,6 +68,7 @@ $routes->post('doaddprogram', 'ProgramController::doaddprogram');
 $routes->get('hapusprogram/(:num)', 'ProgramController::hapusprogram/$1');
 $routes->get('editprogram/(:num)', 'ProgramController::editprogram/$1');
 $routes->post('doeditprogram/(:num)', 'ProgramController::doeditprogram/$1');
+$routes->get('search-program', 'ProgramController::searchprogram');
 
 
 

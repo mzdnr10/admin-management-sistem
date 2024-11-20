@@ -4,8 +4,9 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Tabel Program</h1>
         <div class="d-flex align-items-center mb-3">
-            <a href="<?= base_url('addprogram') ?>" class="btn btn-primary me-2"><i class="fas fa-plus"></i></a>
-            <a href="<?= base_url('addprogram') ?>" class="btn btn-success"><i class="fas fa-arrow-up"></i></a>
+            <a href="<?= base_url('addprogram') ?>" class="btn btn-primary mr-2" style=""><i class="fas fa-plus"></i>Tambah</a>
+            <a href="<?= base_url('export-program') ?>" class="btn btn-success mr-2"><i class="fas fa-arrow-up"></i>Export</a>
+            <a href="<?= base_url('import-program') ?>" class="btn btn-secondary mr-2"><i class="fas fa-arrow-down"></i>Import</a>
         </div>
     </div>
 
@@ -18,6 +19,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
+                        <?php $i = 1; ?>
                         <tr>
                             <th>NO</th>
                             <th>NAMA PROGRAM</th>
@@ -26,19 +28,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($foreach as $row): ?>
+                        <?php if (!empty($foreach)): ?>
+                            <?php foreach ($foreach as $row): ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $row['nama_program']; ?></td>
+                                    <td><?= $row['tahun_program']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('hapusprogram') ?>/<?= $row['id_program'] ?>" class="btn btn-circle btn-danger btn-sm" data-toggle="" data-target="" onclick="return confirm('Apakah Anda yakin ingin menghapus Program ini?');"><i class="fas fa-trash"></i></a>
+                                        <a href="<?= base_url('editprogram') ?>/<?= $row['id_program'] ?>" class="btn btn-circle btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
                             <tr>
-                                <td><?= $row['id_program']; ?></td>
-                                <td><?= $row['nama_program']; ?></td>
-                                <td><?= $row['tahun_program']; ?></td>
-                                <td>
-                                    <a href="<?= base_url('hapusprogram') ?>/<?= $row['id_program'] ?>" class="btn btn-circle btn-danger btn-sm" data-toggle="" data-target="" onclick="return confirm('Apakah Anda yakin ingin menghapus Program ini?');"><i class="fas fa-trash"></i></a>
-                                    <a href="<?= base_url('editprogram') ?>/<?= $row['id_program'] ?>" class="btn btn-circle btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                <td colspan="4" class="text-center">
+                                    <div class="alert alert-warning" role="alert">
+                                        <i class="fas fa-exclamation-circle"></i> Data Tidak Ditemukan!
+                                    </div>
                                 </td>
                             </tr>
-
-                        <?php endforeach; ?>
-
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

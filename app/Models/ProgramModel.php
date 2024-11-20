@@ -13,7 +13,7 @@ class ProgramModel extends Model
     // Fungsi untuk mengambil semua kategori
     public function getprogram()
     {
-        return $this->findAll(); // Mengambil semua data kategori
+        return $this->orderBy('id_program', 'DESC')->findAll(); // Mengambil semua data kategori
     }
 
     public function getidprogram()
@@ -31,7 +31,8 @@ class ProgramModel extends Model
         return $this->find($id);
     }
 
-    public  function getnameprogram(){
+    public  function getnameprogram()
+    {
         return $this->select('id_program, nama_program')->findAll();
     }
 
@@ -40,4 +41,11 @@ class ProgramModel extends Model
         return $this->where('nama_program', $namaProgram)->first();
     }
 
+    public function searchProgram($keyword)
+    {
+        return $this->like('nama_program', $keyword) // Cari berdasarkan nama_program
+            ->orLike('tahun_program', $keyword) // Tambahkan kriteria lain (opsional)
+            ->orderBy('id_program', 'DESC') // Urutkan data
+            ->findAll();
+    }
 }

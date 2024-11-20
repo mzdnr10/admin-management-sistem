@@ -4,8 +4,9 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Tabel Dosen</h1>
         <div class="d-flex align-items-center mb-3">
-            <a href="<?= base_url('adddosen') ?>" class="btn btn-primary me-2"><i class="fas fa-plus"></i></a>
-            <a href="<?= base_url('addprogram') ?>" class="btn btn-success"><i class="fas fa-arrow-up"></i></a>
+            <a href="<?= base_url('adddosen') ?>" class="btn btn-primary mr-2" style=""><i class="fas fa-plus"></i>Tambah</a>
+            <a href="<?= base_url('exportdosen') ?>" class="btn btn-success mr-2"><i class="fas fa-arrow-up"></i>Export</a>
+            <a href="<?= base_url('import-dosen') ?>" class="btn btn-secondary mr-2"><i class="fas fa-arrow-down"></i>Import</a>
         </div>
     </div>
 
@@ -31,9 +32,12 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        <?php $no = 1?>
+                        <?php if (!empty($foreach)): ?>
                         <?php foreach ($foreach as $row): ?>
                             <tr>
-                                <td><?= $row['id_dosen']; ?></td>
+                                <td><?= $no++ ?></td>
                                 <td><?= $row['nama_program']; ?></td>
                                 <td><?= $row['nidn']; ?></td>
                                 <td><?= $row['nama_dosen']; ?></td>
@@ -48,6 +52,15 @@
                             </tr>
 
                         <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="9" class="text-center">
+                                    <div class="alert alert-warning" role="alert">
+                                        <i class="fas fa-exclamation-circle"></i> Data Tidak Ditemukan!
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
 
                     </tbody>
                 </table>

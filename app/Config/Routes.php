@@ -45,7 +45,6 @@ $routes->get('logout', 'AuthController::logout');
 
 
 $routes->get('dashboard', 'DashController::index');
-$routes->get('profile', 'DashController::profile');
 $routes->get('suratmasuk', 'DashController::suratmasuk');
 
 $routes->get('tabeldosen', 'DosenController::index');
@@ -72,6 +71,11 @@ $routes->get('administrator', 'AdminController::index');
 $routes->get('adduser', 'AdminController::adduser');
 $routes->post('doadduser', 'AdminController::doadduser');
 $routes->get('hapususer/(:num)', 'AdminController::hapususer/$1');
+
+$routes->get('profile', 'AdminController::profile');
+$routes->post('doeditprofile/(:num)', 'AdminController::doeditprofile/$1');
+$routes->post('doubahpassword/(:num)', 'AdminController::doubahpassword/$1');
+
 
 
 /*

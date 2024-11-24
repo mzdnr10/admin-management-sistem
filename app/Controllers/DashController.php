@@ -43,23 +43,7 @@ class DashController extends BaseController
         
     }
 
-    public function profile(){
-        if (!session()->get('isLoggedIn')) {
-            // Jika belum login, redirect ke halaman login
-            return redirect()->to('auth')->with('error', 'Akses Anda Ditolak !');
-        }
-
-        $data['title'] = "Profile";
-        if (!session()->get('isLoggedIn')) {
-            // Jika belum login, redirect ke halaman login
-            return redirect()->to('auth')->with('error', 'Akses Anda Ditolak !');
-        }
-
-        echo view('admin/temp/l_header', $data);
-        echo view('admin/temp/sidebar');
-        echo view('admin/temp/topbar');
-        echo view('admin/profile');
-    }
+    
     public function suratmasuk(){
         if (!session()->get('isLoggedIn')) {
             // Jika belum login, redirect ke halaman login
@@ -86,5 +70,7 @@ class DashController extends BaseController
         echo view('admin/temp/topbar');
         echo view('admin/suratkeluar');
     }
+
+
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2024 at 10:34 AM
+-- Generation Time: Nov 24, 2024 at 05:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,19 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dokumen` (
   `id_dokumen` int(11) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
   `nama_dokumen` varchar(128) NOT NULL,
+  `kategori_dokumen` varchar(128) NOT NULL,
   `file` varchar(30) NOT NULL,
   `tanggal_upload` date NOT NULL,
   `tanggal_update` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `dokumen`
---
-
-INSERT INTO `dokumen` (`id_dokumen`, `id_kategori`, `nama_dokumen`, `file`, `tanggal_upload`, `tanggal_update`) VALUES
-(1, 1, 'bahule', 'cekaja.pdf', '2024-11-17', '2024-11-17');
 
 -- --------------------------------------------------------
 
@@ -60,31 +53,6 @@ CREATE TABLE `dosen` (
   `jabatan_fungsional` varchar(123) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `dosen`
---
-
-INSERT INTO `dosen` (`id_dosen`, `id_program`, `nidn`, `nama_dosen`, `perguruan_tinggi`, `email_dosen`, `no_telp`, `jabatan_fungsional`) VALUES
-(1, 1, 2147483647, 'zidan', 'oxford', 'zidanxgrowtopia@gmail.com', 2147483647, 'Dirut');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kategori_dokumen`
---
-
-CREATE TABLE `kategori_dokumen` (
-  `id_kategori` int(11) NOT NULL,
-  `nama_kategori` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `kategori_dokumen`
---
-
-INSERT INTO `kategori_dokumen` (`id_kategori`, `nama_kategori`) VALUES
-(1, 'hutu\r\n');
-
 -- --------------------------------------------------------
 
 --
@@ -96,13 +64,6 @@ CREATE TABLE `program` (
   `nama_program` varchar(128) NOT NULL,
   `tahun_program` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `program`
---
-
-INSERT INTO `program` (`id_program`, `nama_program`, `tahun_program`) VALUES
-(1, 'SERDIK', '2024-11-18');
 
 -- --------------------------------------------------------
 
@@ -123,7 +84,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `email_user`, `username`, `password`, `role_id`) VALUES
-(1, 'admin@gmail.com', 'admin', '$2y$10$xWv8/KHri9nd.6yW4igy3eX2wMV38UE0WAxZTAyhdAcsI.3ZzFNQi', 0);
+(1, 'admin@gmail.com', 'admin', '$2y$10$Rp9QF6beUBRkWDLG5gByMe56NyXLi7IKY5V90kQHJoSusLa7q2mWK', 0);
 
 --
 -- Indexes for dumped tables
@@ -133,8 +94,7 @@ INSERT INTO `user` (`id_user`, `email_user`, `username`, `password`, `role_id`) 
 -- Indexes for table `dokumen`
 --
 ALTER TABLE `dokumen`
-  ADD PRIMARY KEY (`id_dokumen`),
-  ADD KEY `id_kategori` (`id_kategori`);
+  ADD PRIMARY KEY (`id_dokumen`);
 
 --
 -- Indexes for table `dosen`
@@ -142,12 +102,6 @@ ALTER TABLE `dokumen`
 ALTER TABLE `dosen`
   ADD PRIMARY KEY (`id_dosen`),
   ADD KEY `id_program` (`id_program`);
-
---
--- Indexes for table `kategori_dokumen`
---
-ALTER TABLE `kategori_dokumen`
-  ADD PRIMARY KEY (`id_kategori`);
 
 --
 -- Indexes for table `program`
@@ -180,12 +134,6 @@ ALTER TABLE `program`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `dokumen`
---
-ALTER TABLE `dokumen`
-  ADD CONSTRAINT `dokumen_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_dokumen` (`id_kategori`);
 
 --
 -- Constraints for table `dosen`

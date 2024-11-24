@@ -6,7 +6,8 @@ use App\Models\UserModel;
 
 class AuthController extends BaseController
 {
-    public function index(){
+    public function index()
+    {
 
         if (session()->get('isLoggedIn')) {
             // Jika belum login, redirect ke halaman login
@@ -17,37 +18,46 @@ class AuthController extends BaseController
         echo view('admin/login');
     }
 
-    public function doLogin(){
+    public function doLogin()
+    {
+        $request = $this->request;
 
-        // Memuat input dari form login
-        $username = $this->request->getPost('username');
-        $password = $this->request->getPost('password');
+        // Ambil input dari form login
+        $username = $request->getPost('username');
+        $password = $request->getPost('password');
 
-        // Menggunakan model untuk mencari user berdasarkan username
-        $userModel = new UserModel();
-        $user = $userModel->where('username', $username)->first();
-        
-        // echo '<pre>';
-        //     print_r($user['password']);
-        //     print_r($password);
-
-        // Jika user ditemukan dan password benar
-        $user = $userModel->validateUser($username, $password);
-
-        if ($user) {
-            // Set session
-            session()->set([
-                'username' => $user['username'],
-                'isLoggedIn' => true
-            ]);
-
-            // Redirect ke halaman dashboard atau home
-            return redirect()->to('Dashboard');
-        } else {
-            // Jika login gagal, kirimkan pesan error
-            return redirect()->back()->with('error', 'username atau Password salah !');
+        // Validasi input (pastikan username dan password tidak kosong)
+        if (empty($username) || empty($password)) {
+            return redirect()->back()->with('error', 'Username dan password harus diisi!');
         }
+
+        // Inisialisasi model user
+        $userModel = new UserModel();
+
+        // Cek keberadaan user dan validasi password
+        $user = $userModel->where('username', $username)->first();
+
+        if ($user && password_verify($password, $user['password'])) {
+            // Set data sesi
+            $this->setUserSession($user);
+
+            // Redirect ke halaman dashboard
+            return redirect()->to('dashboard')->with('success', 'Login berhasil!');
+        }
+
+        // Jika gagal, kirimkan pesan error
+        return redirect()->back()->with('error', 'Username atau password salah!');
     }
+
+    private function setUserSession(array $user)
+    {
+        session()->set([
+            'username' => $user['username'],
+            'isLoggedIn' => true,
+            'role_id' => $user['role_id'],
+        ]);
+    }
+
 
     public function logout()
     {

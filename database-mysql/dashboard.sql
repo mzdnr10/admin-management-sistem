@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2024 at 10:51 AM
+-- Generation Time: Nov 24, 2024 at 10:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,6 +60,13 @@ CREATE TABLE `dosen` (
   `jabatan_fungsional` varchar(123) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `dosen`
+--
+
+INSERT INTO `dosen` (`id_dosen`, `id_program`, `nidn`, `nama_dosen`, `perguruan_tinggi`, `email_dosen`, `no_telp`, `jabatan_fungsional`) VALUES
+(1, 1, 2147483647, 'zidan', 'oxford', 'zidanxgrowtopia@gmail.com', 2147483647, 'Dirut');
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +97,13 @@ CREATE TABLE `program` (
   `tahun_program` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `program`
+--
+
+INSERT INTO `program` (`id_program`, `nama_program`, `tahun_program`) VALUES
+(1, 'SERDIK', '2024-11-18');
+
 -- --------------------------------------------------------
 
 --
@@ -100,15 +114,16 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `email_user` varchar(128) NOT NULL,
   `username` varchar(21) NOT NULL,
-  `password` varchar(128) NOT NULL
+  `password` varchar(128) NOT NULL,
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `email_user`, `username`, `password`) VALUES
-(1, 'admin@gmail.com', 'admin', 'admin');
+INSERT INTO `user` (`id_user`, `email_user`, `username`, `password`, `role_id`) VALUES
+(1, 'admin@gmail.com', 'admin', '$2y$10$xWv8/KHri9nd.6yW4igy3eX2wMV38UE0WAxZTAyhdAcsI.3ZzFNQi', 0);
 
 --
 -- Indexes for dumped tables

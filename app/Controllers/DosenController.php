@@ -170,6 +170,7 @@ class DosenController extends BaseController
 
         // Kirim data dosen dan program ke view
         $data = [
+            'title' => "Edit Dosen",
             'id_dosen' => $dosen['id_dosen'],
             'nidn' => $dosen['nidn'],
             'nama_dosen' => $dosen['nama_dosen'],

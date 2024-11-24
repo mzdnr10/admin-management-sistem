@@ -59,9 +59,6 @@ $routes->post('import-dosen', 'DosenController::importExcel'); // Proses import
 $routes->get('search-dosen', 'DosenController::searchdosen');
 
 
-
-
-
 $routes->get('dataprogram', 'ProgramController::index');
 $routes->get('addprogram', 'ProgramController::addprogram');
 $routes->post('doaddprogram', 'ProgramController::doaddprogram');
@@ -71,6 +68,10 @@ $routes->post('doeditprogram/(:num)', 'ProgramController::doeditprogram/$1');
 $routes->get('search-program', 'ProgramController::searchprogram');
 
 
+$routes->get('administrator', 'AdminController::index');
+$routes->get('adduser', 'AdminController::adduser');
+$routes->post('doadduser', 'AdminController::doadduser');
+$routes->get('hapususer/(:num)', 'AdminController::hapususer/$1');
 
 
 /*

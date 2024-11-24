@@ -19,7 +19,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url('Dashboard') ?>">
+                <a class="nav-link" href="<?= base_url('dashboard') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -51,7 +51,22 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Surat Masuk/keluar</span></a>
             </li>
-            
+
+            <?php if (session()->get('role_id') == 0): ?>
+                <div class="sidebar-heading">
+                    User Account
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('administrator') ?>">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Administrator</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+
+
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -62,6 +77,6 @@
             </div>
 
 
-            
+
 
         </ul>

@@ -45,7 +45,6 @@ $routes->get('logout', 'AuthController::logout');
 
 
 $routes->get('dashboard', 'DashController::index');
-$routes->get('suratmasuk', 'DashController::suratmasuk');
 
 $routes->get('tabeldosen', 'DosenController::index');
 $routes->get('adddosen', 'DosenController::adddosen');
@@ -75,6 +74,14 @@ $routes->get('hapususer/(:num)', 'AdminController::hapususer/$1');
 $routes->get('profile', 'AdminController::profile');
 $routes->post('doeditprofile/(:num)', 'AdminController::doeditprofile/$1');
 $routes->post('doubahpassword/(:num)', 'AdminController::doubahpassword/$1');
+
+
+$routes->get('dokumen', 'DashController::dokumen');
+$routes->get('adddokumen', 'DashController::adddokumen');
+$routes->get('hapusdokumen/(:num)', 'DashController::hapusdokumen/$1');
+$routes->get('editdokumen/(:num)', 'DashController::editdokumen/$1');
+$routes->post('doeditdokumen/(:num)', 'DashController::doeditdokumen/$1');
+$routes->post('doadddokumen', 'DashController::doadddokumen');
 
 
 

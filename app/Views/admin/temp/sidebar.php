@@ -47,9 +47,9 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('suratmasuk') ?>">
+                <a class="nav-link" href="<?= base_url('dokumen') ?>">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Surat Masuk/keluar</span></a>
+                    <span>Dokumen</span></a>
             </li>
 
             <?php if (session()->get('role_id') == 0): ?>
